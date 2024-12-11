@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lcm.c                                              :+:      :+:    :+:   */
+/*   pgcd.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olthorel <olthorel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 10:57:01 by olthorel          #+#    #+#             */
-/*   Updated: 2024/12/11 11:35:33 by olthorel         ###   ########.fr       */
+/*   Created: 2024/12/11 11:45:51 by olthorel          #+#    #+#             */
+/*   Updated: 2024/12/11 11:52:25 by olthorel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int    lcm(unsigned int a, unsigned int b)
+#include <stdlib.h>
+#include <stdio.h>
+
+int	main(int ac, char **av)
 {
-	unsigned int n;
-	
-	if (a == 0 || b == 0)
-		return (0);
-	if (a > b)
-		a = b;
-	else
-		b = a;
-	while (1)
+	int	nb1;
+	int nb2;
+	if (ac == 3)
 	{
-		if (n % a == 0 && n % b == 0)
-			return (n);
-		n++;
+		nb1 = atoi(av[1]);
+		nb2 = atoi(av[2]);
+		if (nb1 > 0 && nb2 > 0)
+		{
+			while (nb1 != nb2)
+			{
+				if (nb1 > nb2)
+					nb1 = nb1 - nb2;
+				else
+					nb2 = nb2 - nb1;
+			}
+			printf("%d", nb1);
+		}
 	}
+	write(1, "\n", 1);
+	return (0);
 }

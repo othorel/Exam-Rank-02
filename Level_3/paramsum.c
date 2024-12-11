@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lcm.c                                              :+:      :+:    :+:   */
+/*   paramsum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olthorel <olthorel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 10:57:01 by olthorel          #+#    #+#             */
-/*   Updated: 2024/12/11 11:35:33 by olthorel         ###   ########.fr       */
+/*   Created: 2024/12/11 11:38:40 by olthorel          #+#    #+#             */
+/*   Updated: 2024/12/11 11:42:51 by olthorel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int    lcm(unsigned int a, unsigned int b)
+#include <unistd.h>
+
+void	ft_putnbr(int nb)
 {
-	unsigned int n;
+	int	c;
 	
-	if (a == 0 || b == 0)
-		return (0);
-	if (a > b)
-		a = b;
-	else
-		b = a;
-	while (1)
-	{
-		if (n % a == 0 && n % b == 0)
-			return (n);
-		n++;
-	}
+	if (nb > 9)
+		ft_putnbr(nb / 10);
+	c = nb % 10 + 48;
+	write(1, &c, 1);
+}
+
+int	main(int ac, char **av)
+{
+	(void)av;
+	
+	ft_putnbr(ac - 1);
+	write(1, "\n", 1);
+	return (0);
 }
